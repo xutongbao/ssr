@@ -1,0 +1,18 @@
+{
+  "name": "learn-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "set PORT=3003 && next dev",
+    "build": "next build",
+    "start": "set PORT=84 && next start",
+    "serve1": "cross-env name=source_scripts_ssr_dev2 pm2 start ecosystem.config.js && pm2 logs"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "next": "^11.0.0",
+    "pm2": "^5.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}
