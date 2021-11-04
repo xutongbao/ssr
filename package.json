@@ -6,7 +6,7 @@
     "dev": "set PORT=3003 && next dev",
     "build": "next build",
     "start": "set PORT=84 && next start",
-    "serve1": "cross-env name=source_scripts_ssr_serve1 pm2 start ecosystem.config.js && pm2 logs"
+    "serve1": "cross-env name=source_scripts_ssr_serve1 PORT=84 pm2 start ecosystem.config.js && pm2 logs"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
