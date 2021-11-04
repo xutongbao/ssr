@@ -8,7 +8,7 @@ const name = '服务端渲染'
 
 // 发邮件
 const email = async ({ runData, recordData }) => {
-  const { currentPort } = runData
+  const { resultPort } = runData
   const emailData = {
     type: 'jenkins',
     title: '构建成功-测试环境',
@@ -16,7 +16,7 @@ const email = async ({ runData, recordData }) => {
     gitRepositorieName: process.env.gitRepositorieName,
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
-    url: `${host}:${currentPort}`,
+    url: `${host}:${resultPort}`,
     hashUrl: `${host}/${recordData.info.hash}`,
     remarks: '自动，服务端渲染'
   }
@@ -34,14 +34,14 @@ const email = async ({ runData, recordData }) => {
 
 // 添加构建记录
 const handleAddRecord = async ({ runData }) => {
-  const { currentPort } = runData
+  const { resultPort } = runData
   const dataItem = {
     name,
     gitRepositorieName: process.env.gitRepositorieName,
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
     projectType: 'node',
-    url: `${host}:${currentPort}`,
+    url: `${host}:${resultPort}`,
     remarks: '自动，服务端渲染'
   }
   return await axios
@@ -62,7 +62,8 @@ const run = async () => {
   return await axios
     .post(`${baseURL}/api/jenkins/run`, {
       gitRepositorieName: process.env.gitRepositorieName,
-      branch: process.env.branch
+      branch: process.env.branch,
+      isSsr: true
     })
     .then((res) => {
       if (res.data.state === 1) {
