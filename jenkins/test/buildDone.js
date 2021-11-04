@@ -17,7 +17,7 @@ const email = async ({ runData, recordData }) => {
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
     url: `${host}:${resultPort}`,
-    hashUrl: `${host}/${recordData.info.hash}`,
+    hashUrl: `${host}/${recordData.info.hash}/ssr`,
     remarks: '自动，服务端渲染'
   }
   await axios
@@ -41,7 +41,7 @@ const handleAddRecord = async ({ runData }) => {
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
     projectType: 'node',
-    url: `${host}:${resultPort}`,
+    url: `${host}:${resultPort}/ssr`,
     remarks: '自动，服务端渲染'
   }
   return await axios
