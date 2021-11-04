@@ -40,7 +40,7 @@ const handleAddRecord = async ({ runData }) => {
     gitRepositorieName: process.env.gitRepositorieName,
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
-    projectType: 'node',
+    projectType: 'ssr',
     url: `${host}:${resultPort}/ssr`,
     remarks: '自动，服务端渲染'
   }
