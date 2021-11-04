@@ -16,8 +16,7 @@ const email = async ({ runData, recordData }) => {
     gitRepositorieName: process.env.gitRepositorieName,
     jenkinsProjectName: getJenkinsProjectName({ cd: process.env.cd }),
     branch: process.env.branch,
-    url: `${host}:${resultPort}`,
-    hashUrl: `${host}/${recordData.info.hash}/ssr`,
+    url: `${host}:${resultPort}/ssr`,
     remarks: '自动，服务端渲染'
   }
   await axios
